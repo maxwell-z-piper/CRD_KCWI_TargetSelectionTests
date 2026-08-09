@@ -1,0 +1,38 @@
+# =============================================================================
+# SHARED KCWI / KCRM CRD TARGET CONFIGURATION
+# =============================================================================
+# Edit this ONE file when changing target or slicer.
+
+# Instrument slicer: Small, Medium, or Large
+SLICER = Small
+
+# Target identity
+TARGET_NAME = IC25
+TARGET_REDSHIFT = 0.01944
+PLATEIFU = 8656-6101
+
+# Estimated component kinematics near the two-sigma / maximum-separation region
+# V_A and V_B are REST-FRAME residual velocities relative to systemic.
+V_A = -60.0
+V_B = 69.0
+
+# Estimated intrinsic dispersions of the INDIVIDUAL stellar disks.
+# sigma_disk ~ sqrt[sigma_peak^2 - ((Delta V)^2 / 4)]
+SIGMA_A = 50.0
+SIGMA_B = 50.0
+
+# Representative Disk-A light fraction near the two-sigma region.
+TARGET_FRAC_A = 0.50
+
+# MaNGA / spatial-planning quantities used by the PowerBin script.
+PA_KIN_DEG = 35.0
+TWO_SIGMA_RADIUS_ARCSEC = 8.0
+
+# Radial width = +- from sigma radius along PA_kin for Voronoi Binning sigma peak box
+# Minor width  = +- from sigma radius perpendicular to PA_kin for Voronoi Binning sigma peak box
+TWO_SIGMA_RADIAL_HALF_WIDTH_ARCSEC = 1.5
+TWO_SIGMA_MINOR_HALF_WIDTH_ARCSEC = 1.0
+
+# Optional IFU pointing offset from the MaNGA galaxy center.
+IFU_CENTER_X_ARCSEC = 0.0
+IFU_CENTER_Y_ARCSEC = 0.0
