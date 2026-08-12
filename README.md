@@ -28,7 +28,7 @@ It reuses the machinery in Script 1 but moves the experiment into the KCRM red a
 
 It performs both the free_fraction and fixed_50_50 experiments for f_A, allowing us to distinguish the intrinsic information content from the f_A-velocity degeneracy. Crucially, it adds explicit velocity-dispersion recovery diagnostics. So unlike the earlier BL experiment, we're not only asking whether V_A and V_B are recovered, but also whether we can make meaningful σ_A(x,y) and σ_B(x,y) maps.
 
-# KCWI_BL_population_recovery_configfile.py
+# KCWI_BL_population_recovery_configfile_FIXED.py
 This answers a very different question from the prior scripts. It asks: At a given BL S/N, how well can we separate the two disks' stellar populations while fixing V_A, V_B, σ_A, and σ_B from the RH3 kinematics? 
 
 Specifically, it tries to recover the blue light fraction, age of each disk, metallicity of each disk, and whether one component is younger or more metal rich.
@@ -41,6 +41,9 @@ Despite the historical filename, this is now our PowerBin spatial/exposure-time 
 It reads the target's MaNGA data and uses the MaNGA flux distribution as a surface-brightness model. It then places the selected KCWI field at the target's kinematic PA, samples the appropriate Small/Medium/Large geometry, predicts S/N, and adaptively bins the simulated field.
 
 This is the one script that also needs target-specific spatial information from the shared config: PLATEIFU, PA_KIN_DEG, and the approximate radial location of the 2σ along PA_kin from the galactic center. It currently bins to SN_BL = SN_RED = 30. It then runs the simulation over varying exposure times of 2-6hrs and examines things like the number and size of spatial bins, radial coverage, and sampling around the approximate 2σ regions.
+
+# KCRM_RM2_RH3_injection_recovery_fixed_fraction_sweep_configfile.py
+This script is to handle an interesting case. It is identical to KCRM_RM2_RH3_injection_recovery_configfile.py, however instead of the fixed-fraction simply being f_A=0.5, it instead varies over f_A = 0.5, 0.6, 0.7, 0.8, and 0.9. I have found that some identified CRDs seem to have only a single visible stellar disk in the MaNGA IFU MAPS. This could be because the MaNGA IFU aperture was too zoomed-in therefore cutting off a fair amount of the galaxy, or it could be the case that the light fraction is just very much unequal and that the weaker stellar disk is much fainter. If the case is the latter, this code tests whether, given the σ_base, σ_peak, and calculated ΔV values from the MaNGA stellar σ MAPS, the LOSVDs are able to be decomposed with the RH3 slicer at varying S/N.  
 
 
 
