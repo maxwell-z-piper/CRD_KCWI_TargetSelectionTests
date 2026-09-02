@@ -1,4 +1,4 @@
-# asdf
+# CRD_LOSVD_Variance_Derivation_and_Target_Selection.pdf
 Detailed document describing the method behind the target selection criteria.
 
 # asdf
